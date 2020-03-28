@@ -33,7 +33,6 @@ public class ToyGame {
 
 	/**
 	 * Move the robot forward
-	 * @param direction This is the direction that the robot will move
 	 * @throws ToyRobotInvalidPlaceException Throws exception if the board/robot doesn't exist
 	 */
 	public void makeMove() throws ToyRobotInvalidPlaceException {
