@@ -4,8 +4,6 @@ public class Robot {
 	private Position position;
 	private Direction direction;
 
-	public Robot() { }
-
 	public Robot(Position position, Direction direction) {
 		this.position = position;
 		this.direction = direction;
@@ -25,5 +23,14 @@ public class Robot {
 
 	public void setDirection(Direction direction) {
 		this.direction = direction;
+	}
+
+	public void placeRobot(Position position, Direction direction) {
+		this.position = position;
+		this.direction = direction;
+	}
+
+	public Position makeMove(Direction direction) {
+		return this.position.forwardPosition(direction);
 	}
 }
