@@ -4,6 +4,8 @@ public class Robot {
 	private Position position;
 	private Direction direction;
 
+	public Robot() {}
+
 	public Robot(Position position, Direction direction) {
 		this.position = position;
 		this.direction = direction;
@@ -32,5 +34,19 @@ public class Robot {
 
 	public Position makeMove() {
 		return this.position.forwardPosition(direction);
+	}
+
+	/**
+	 * rotate robot direction to left
+	 */
+	public void rotateLeft() {
+		this.direction =  this.direction.rotateLeft();
+	}
+
+	/**
+	 * rotate robot direction to right
+	 */
+	public void rotateRight() {
+		this.direction = this.direction.rotateRight();
 	}
 }
