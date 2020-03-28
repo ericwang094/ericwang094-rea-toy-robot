@@ -1,4 +1,4 @@
-package com.toy.robot.model;
+package com.toy.robot.command;
 
 public enum Command {
 	PLACE,

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class InputHandler {
+	private static final String INPUT_FILE_PATH = "./inputFiles/";
 	InputStream inputStream;
 
 	public InputHandler(InputStream inputStream) {
@@ -47,7 +48,7 @@ public class InputHandler {
 	private List<String> getCommandLineFromFile(String filePath) {
 		List<String> commandList = new ArrayList<>();
 		try {
-			File file = new File(filePath);
+			File file = new File(INPUT_FILE_PATH + filePath);
 			Scanner scanner = new Scanner(file);
 			commandList = filterCommandFromInput(scanner);
 			return commandList;
@@ -68,7 +69,7 @@ public class InputHandler {
 			if (!InputValidator.validateInput(commandLine)) {
 				continue;
 			}
-			commandList.add(commandLine);
+			commandList.add(commandLine.toUpperCase());
 		}
 		return commandList;
 	}
