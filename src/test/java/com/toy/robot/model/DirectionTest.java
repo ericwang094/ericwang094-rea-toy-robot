@@ -1,5 +1,6 @@
 package com.toy.robot.model;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -8,6 +9,7 @@ import static org.junit.Assert.assertEquals;
 public class DirectionTest {
 
 	@Test
+	@DisplayName("Test direction rotate")
 	public void testRotate() {
 		Direction direction = Direction.NORTH;
 		Direction directionEast = direction.rotateRight();
@@ -40,10 +42,14 @@ public class DirectionTest {
 				.as("Rotate counterclockwise from West to South")
 				.isEqualToComparingFieldByField(Direction.SOUTH);
 
-		assertEquals("Rotate counterclockwise from West to South", Direction.SOUTH, directionSouth);
 		directionEast = directionSouth.rotateLeft();
-		assertEquals("Rotate counterclockwise from South to East", Direction.EAST, directionEast);
+		assertThat(directionEast)
+				.as("Rotate counterclockwise from South to East")
+				.isEqualToComparingFieldByField(Direction.EAST);
+
 		directionNorth = directionEast.rotateLeft();
-		assertEquals("Rotate counterclockwise from East to North", Direction.NORTH, directionNorth);
+		assertThat(directionNorth)
+				.as("Rotate counterclockwise from East to North")
+				.isEqualToComparingFieldByField(Direction.NORTH);
 	}
 }
