@@ -1,13 +1,5 @@
 package com.toy.robot;
 
-import com.toy.robot.exception.ToyRobotInvalidPlaceException;
-import com.toy.robot.ToyRobotApp;
-import com.toy.robot.game.ToyGame;
-import com.toy.robot.model.Board;
-import com.toy.robot.model.Direction;
-import com.toy.robot.model.Position;
-import com.toy.robot.model.Robot;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
