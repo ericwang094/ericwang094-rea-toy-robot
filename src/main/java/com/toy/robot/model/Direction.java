@@ -19,30 +19,30 @@ public enum Direction {
 			index2DirectionMap.put(direction.directionIndex, direction);
 		}
 	}
-	private Direction (int directionIndex) {
+	Direction (int directionIndex) {
 		this.directionIndex = directionIndex;
 	}
 
 	/**
 	 * Rotate current position to left
-	 * @return
+	 * @return new direction after turn left
 	 */
-	private Direction rotateLeft() {
+	public Direction rotateLeft() {
 		return rotate(TURN_LEFT);
 	}
 
 	/**
 	 * rotate current position to right
-	 * @return
+	 * @return new direction after turn right
 	 */
-	private Direction rotateRight() {
+	public Direction rotateRight() {
 		return rotate(TURN_RIGHT);
 	}
 
 	/**
 	 * Rotate position based on index
-	 * @param rotateIndex
-	 * @return
+	 * @param rotateIndex This is the direction of next direction
+	 * @return new direction after rotate
 	 */
 	private Direction rotate(int rotateIndex) {
 		int newDirectionIndex = this.directionIndex + rotateIndex;
