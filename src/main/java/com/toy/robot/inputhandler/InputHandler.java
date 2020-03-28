@@ -36,7 +36,7 @@ public class InputHandler {
 		Scanner scanner = new Scanner(inputStream);
 		System.out.println("ToyGame started");
 		System.out.println("Please input command");
-		System.out.println("Invalid input will be ignored, CTRL + E to execute command, enjoy");
+		System.out.println("Invalid input will be ignored, CTRL + D to execute command, enjoy");
 		return filterCommandFromInput(scanner);
 	}
 
@@ -69,7 +69,7 @@ public class InputHandler {
 			if (!InputValidator.validateInput(commandLine)) {
 				continue;
 			}
-			commandList.add(commandLine.toUpperCase());
+			commandList.add(commandLine.toUpperCase().trim());
 		}
 		return commandList;
 	}

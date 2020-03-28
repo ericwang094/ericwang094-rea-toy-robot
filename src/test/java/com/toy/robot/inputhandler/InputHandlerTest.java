@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class InputHandlerTest {
 	private InputHandler inputHandler;
@@ -67,6 +68,16 @@ public class InputHandlerTest {
 		assertThat(commandList)
 				.as("Test get input from File with 1 wrong command")
 				.isEqualTo(benchMark);
+	}
+
+	@Test
+	@DisplayName("Test get input from error file")
+	public void getCommandsFileTestWithErrorFile() {
+		List<String> inputCommandList = prepareTestInputString();
+		inputHandler.inputStream = new ByteArrayInputStream(prepareTestInput(inputCommandList).getBytes());
+		List<String> commandList = inputHandler.getCommands(new String[]{"noSuchFile"});
+		List<String> benchMark = prepareTestInputString();
+		assertThatThrownBy()
 	}
 
 	private String prepareTestInput(List<String> testInputList) {
