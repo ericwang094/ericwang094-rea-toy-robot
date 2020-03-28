@@ -1,10 +1,12 @@
 package com.toy.robot.game;
 
-import com.toy.robot.exception.ToyRobotInvalidPlaceException;
+import com.toy.robot.command.Command;
 import com.toy.robot.model.Board;
 import com.toy.robot.model.Direction;
 import com.toy.robot.model.Position;
 import com.toy.robot.model.Robot;
+
+import java.util.List;
 
 public class ToyGame {
 	private Board board;
@@ -15,35 +17,85 @@ public class ToyGame {
 		this.robot = robot;
 	}
 
+	public void execute(List<String> commandList) {
+		for(String commandString : commandList) {
+			if (commandString.startsWith("PLACE")) {
+				String[] placeArgs = commandString.split("\\s")[1].split(",");
+				Position position = new Position(Integer.parseInt(placeArgs[0]),
+						Integer.parseInt(placeArgs[1]));
+				Direction direction = Direction.valueOf(placeArgs[2]);
+				placeRobot(position, direction);
+			} else if (commandString.equals("MOVE")) {
+				makeMove();
+			} else if(commandString.equals("LEFT") || commandString.equals("RIGHT")) {
+				rotate(Command.valueOf(commandString));
+			} else if (commandString.equals("REPORT")) {
+				report();
+			}
+		}
+	}
 	/**
 	 * Place the robot into a place
 	 * @param position This is the new location that the robot will be in
 	 * @param direction This is the direction that the robot will face
-	 * @throws ToyRobotInvalidPlaceException Throws exception if the board/robot doesn't exist
 	 */
-	public void placeRobot(Position position, Direction direction) throws ToyRobotInvalidPlaceException {
+	private void placeRobot(Position position, Direction direction) {
 		if (this.board == null || this.robot == null || position == null) {
-			throw new ToyRobotInvalidPlaceException(ToyRobotInvalidPlaceException.INVALID_PLACE_ERR_MSG);
+			return;
 		}
 		if (!this.board.isValidMove(position)) {
-			throw new ToyRobotInvalidPlaceException(ToyRobotInvalidPlaceException.INVALID_PLACE_ERR_MSG);
+			return;
 		}
 		robot.placeRobot(position, direction);
 	}
 
 	/**
 	 * Move the robot forward
-	 * @throws ToyRobotInvalidPlaceException Throws exception if the board/robot doesn't exist
 	 */
-	public void makeMove() throws ToyRobotInvalidPlaceException {
+	private void makeMove() {
 		if (this.board == null || this.robot == null || this.robot.getPosition() == null) {
-			throw new ToyRobotInvalidPlaceException(ToyRobotInvalidPlaceException.INVALID_PLACE_ERR_MSG);
+			return;
 		}
 
 		Position newPosition = robot.makeMove();
 		if (!this.board.isValidMove(newPosition)) {
-			throw new ToyRobotInvalidPlaceException(ToyRobotInvalidPlaceException.INVALID_PLACE_ERR_MSG);
+			return;
 		}
-		robot.makeMove();
+		robot.setPosition(newPosition);
+	}
+
+	/**
+	 * Rotate robot's direction
+	 * @param command This is the command to rotate robot
+	 */
+	public void rotate(Command command) {
+		switch(command) {
+			case LEFT:
+				robot.rotateLeft();
+				break;
+			case RIGHT:
+				robot.rotateRight();
+				break;
+		}
+	}
+
+	/**
+	 * Report robot's position and direction
+	 * @return
+	 */
+	private void report() {
+		if (this.board == null || this.robot.getPosition() == null) {
+			System.out.print("");
+			return;
+		}
+
+		StringBuilder sb = new StringBuilder();
+		Position position = this.robot.getPosition();
+		sb.append(position.getX())
+				.append(",")
+				.append(position.getY())
+				.append(",")
+				.append(this.robot.getDirection());
+		System.out.print(sb.toString());
 	}
 }
