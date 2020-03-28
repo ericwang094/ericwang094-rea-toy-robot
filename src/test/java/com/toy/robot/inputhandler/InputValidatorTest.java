@@ -19,6 +19,16 @@ public class InputValidatorTest {
 	@Test
 	@DisplayName("Valid Incorrect Place command")
 	public void validateInputWithInvalidPlace() {
+		String input = "PLACE";
+		boolean validResult = InputValidator.validateInput(input);
+		assertThat(validResult)
+				.as("Valid Incorrect Place command, should return false")
+				.isFalse();
+	}
+
+	@Test
+	@DisplayName("Valid Incorrect Place command")
+	public void validateInputWithInvalidPlace2() {
 		String input = "PLACE 0";
 		boolean validResult = InputValidator.validateInput(input);
 		assertThat(validResult)

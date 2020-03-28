@@ -30,7 +30,7 @@ public class InputValidator {
 	 */
 	private static boolean validatePlaceCommand(String[] stringArray) {
 		// ensure input string array is not empty
-		if (stringArray.length == 0) {
+		if (stringArray.length != 2) {
 			return false;
 		}
 

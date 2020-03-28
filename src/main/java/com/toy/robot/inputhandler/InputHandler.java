@@ -19,13 +19,10 @@ public class InputHandler {
 	 * @return Get commands based on commandLine input
 	 */
 	public List<String> getCommands(String[] args) {
-		switch (args.length) {
-			case 0:
-				return getCommandsFromCommandLine();
-			case 1:
-				return getCommandLineFromFile(args[0]);
-			default:
-				return new ArrayList<String>();
+		if (args.length == 0) {
+			return getCommandsFromCommandLine();
+		} else {
+			return getCommandLineFromFile(args[0]);
 		}
 	}
 
@@ -49,6 +46,9 @@ public class InputHandler {
 		List<String> commandList = new ArrayList<>();
 		try {
 			File file = new File(INPUT_FILE_PATH + filePath);
+			if (!file.exists()) {
+				return commandList;
+			}
 			Scanner scanner = new Scanner(file);
 			commandList = filterCommandFromInput(scanner);
 			return commandList;
