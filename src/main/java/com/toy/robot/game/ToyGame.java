@@ -36,15 +36,15 @@ public class ToyGame {
 	 * @param direction This is the direction that the robot will move
 	 * @throws ToyRobotInvalidPlaceException Throws exception if the board/robot doesn't exist
 	 */
-	public void makeMove(Direction direction) throws ToyRobotInvalidPlaceException {
+	public void makeMove() throws ToyRobotInvalidPlaceException {
 		if (this.board == null || this.robot == null || this.robot.getPosition() == null) {
 			throw new ToyRobotInvalidPlaceException(ToyRobotInvalidPlaceException.INVALID_PLACE_ERR_MSG);
 		}
 
-		Position newPosition = robot.makeMove(direction);
+		Position newPosition = robot.makeMove();
 		if (!this.board.isValidMove(newPosition)) {
 			throw new ToyRobotInvalidPlaceException(ToyRobotInvalidPlaceException.INVALID_PLACE_ERR_MSG);
 		}
-		robot.makeMove(direction);
+		robot.makeMove();
 	}
 }

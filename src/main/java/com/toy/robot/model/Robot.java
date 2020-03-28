@@ -30,7 +30,7 @@ public class Robot {
 		this.direction = direction;
 	}
 
-	public Position makeMove(Direction direction) {
+	public Position makeMove() {
 		return this.position.forwardPosition(direction);
 	}
 }

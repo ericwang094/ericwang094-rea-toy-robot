@@ -1,11 +1,13 @@
 package com.toy.robot.model;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BoardTest {
 	@Test
+	@DisplayName("Test valid move")
 	public void testIsValidMove() {
 		Board board = new Board(5, 5);
 		assertThat(board.isValidMove(new Position(3, 3)))
