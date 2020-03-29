@@ -40,9 +40,6 @@ public class ToyGame {
 	 * @param direction This is the direction that the robot will face
 	 */
 	private void placeRobot(Position position, Direction direction) {
-		if (this.board == null || this.robot == null || position == null) {
-			return;
-		}
 		if (!this.board.isValidMove(position)) {
 			return;
 		}
@@ -53,7 +50,7 @@ public class ToyGame {
 	 * Move the robot forward
 	 */
 	private void makeMove() {
-		if (this.board == null || this.robot == null || this.robot.getPosition() == null) {
+		if (this.robot.getPosition() == null) {
 			return;
 		}
 
@@ -69,6 +66,9 @@ public class ToyGame {
 	 * @param command This is the command to rotate robot
 	 */
 	public void rotate(Command command) {
+		if (this.robot.getPosition() == null) {
+			return;
+		}
 		switch(command) {
 			case LEFT:
 				robot.rotateLeft();
@@ -81,10 +81,9 @@ public class ToyGame {
 
 	/**
 	 * Report robot's position and direction
-	 * @return
 	 */
 	private void report() {
-		if (this.board == null || this.robot.getPosition() == null) {
+		if (this.robot.getPosition() == null) {
 			System.out.print("");
 			return;
 		}

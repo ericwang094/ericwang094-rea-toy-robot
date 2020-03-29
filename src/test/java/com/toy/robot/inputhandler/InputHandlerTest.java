@@ -49,7 +49,7 @@ public class InputHandlerTest {
 	public void getCommandsFileTest() {
 		List<String> inputCommandList = prepareTestInputString();
 		inputHandler.inputStream = new ByteArrayInputStream(prepareTestInput(inputCommandList).getBytes());
-		List<String> commandList = inputHandler.getCommands(new String[]{"inputText.txt"});
+		List<String> commandList = inputHandler.getCommands(new String[]{"testInputHandler1.txt"});
 		List<String> benchMark = prepareTestInputString();
 		assertThat(commandList)
 				.as("Two command should be the same")
@@ -61,7 +61,7 @@ public class InputHandlerTest {
 	public void getCommandsFileTestWithOneWrongCommand() {
 		List<String> inputCommandList = prepareTestInputString();
 		inputHandler.inputStream = new ByteArrayInputStream(prepareTestInput(inputCommandList).getBytes());
-		List<String> commandList = inputHandler.getCommands(new String[]{"inputTextWithWrongInput"});
+		List<String> commandList = inputHandler.getCommands(new String[]{"testInputHandler2.txt"});
 		List<String> benchMark = prepareTestInputString();
 		assertThat(commandList)
 				.as("Test get input from File with 1 wrong command")

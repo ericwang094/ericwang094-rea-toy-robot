@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.*;
 
 public class ToyRobotAppTest {
@@ -24,8 +23,8 @@ public class ToyRobotAppTest {
 	@Test
 	@DisplayName("Toy game test 1")
 	public void testToyGameSet1(){
-		String input1 = "input1.txt";
-		toyRobotApp.startGame(new String[]{input1});
+		String input = "input1.txt";
+		toyRobotApp.startGame(new String[]{input});
 		assertThat(outContent.toString())
 				.isEqualTo("0,1,NORTH");
 	}
@@ -33,8 +32,8 @@ public class ToyRobotAppTest {
 	@Test
 	@DisplayName("Toy game test 2")
 	public void testToyGameSet2(){
-		String input1 = "input2.txt";
-		toyRobotApp.startGame(new String[]{input1});
+		String input = "input2.txt";
+		toyRobotApp.startGame(new String[]{input});
 		assertThat(outContent.toString())
 				.isEqualTo("0,0,WEST");
 	}
@@ -42,8 +41,8 @@ public class ToyRobotAppTest {
 	@Test
 	@DisplayName("Toy game test 3")
 	public void testToyGameSet3(){
-		String input1 = "input3.txt";
-		toyRobotApp.startGame(new String[]{input1});
+		String input = "input3.txt";
+		toyRobotApp.startGame(new String[]{input});
 		assertThat(outContent.toString())
 				.isEqualTo("3,3,NORTH");
 	}
@@ -51,8 +50,8 @@ public class ToyRobotAppTest {
 	@Test
 	@DisplayName("Toy game test 4")
 	public void testToyGameSet4(){
-		String input1 = "input4.txt";
-		toyRobotApp.startGame(new String[]{input1});
+		String input = "input4.txt";
+		toyRobotApp.startGame(new String[]{input});
 		assertThat(outContent.toString())
 				.isEqualTo("0,0,EAST");
 	}
@@ -60,9 +59,27 @@ public class ToyRobotAppTest {
 	@Test
 	@DisplayName("Toy game test place out of bound")
 	public void testToyGameSet5(){
-		String input1 = "input5.txt";
-		toyRobotApp.startGame(new String[]{input1});
+		String input = "input5.txt";
+		toyRobotApp.startGame(new String[]{input});
 		assertThat(outContent.toString())
 				.isEqualTo("");
+	}
+
+	@Test
+	@DisplayName("Toy game test game not start with place")
+	public void testToyGameSet6(){
+		String input = "input6.txt";
+		toyRobotApp.startGame(new String[]{input});
+		assertThat(outContent.toString())
+				.isEqualTo("");
+	}
+
+	@Test
+	@DisplayName("Toy game test game move to out of bound")
+	public void testToyGameSet7(){
+		String input = "input7.txt";
+		toyRobotApp.startGame(new String[]{input});
+		assertThat(outContent.toString())
+				.isEqualTo("4,4,NORTH");
 	}
 }
