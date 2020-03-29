@@ -50,7 +50,7 @@ public enum Direction {
 			// if it rotate counter clockwise and move from North, return the last position in the map.
 			return index2DirectionMap.get(index2DirectionMap.size() - 1);
 		}
-		// Otherwise, use mode operation to corresponding direction
+		// Otherwise, use mode operation to get corresponding direction
 		return index2DirectionMap.get(newDirectionIndex % index2DirectionMap.size());
 	}
 }

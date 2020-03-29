@@ -19,8 +19,8 @@ public class Position {
 
 	/**
 	 * Get next position by given direction
-	 * @param direction
-	 * @return
+	 * @param direction is a direction that a robot facing
+	 * @return A new position based on current location and direction
 	 */
 	public Position forwardPosition(Direction direction) {
 		int newX = this.x;

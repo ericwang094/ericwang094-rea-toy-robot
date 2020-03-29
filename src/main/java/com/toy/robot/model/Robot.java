@@ -27,11 +27,18 @@ public class Robot {
 		this.direction = direction;
 	}
 
+	/**
+	 * @param position is the new position for robot
+	 * @param direction is the new direction for robot
+	 */
 	public void placeRobot(Position position, Direction direction) {
 		this.position = position;
 		this.direction = direction;
 	}
 
+	/**
+	 * @return next potential position for robot
+	 */
 	public Position makeMove() {
 		return this.position.forwardPosition(direction);
 	}

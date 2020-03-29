@@ -17,6 +17,10 @@ public class ToyGame {
 		this.robot = robot;
 	}
 
+	/**
+	 *
+	 * @param commandList This is the valid commandList that going to be execute
+	 */
 	public void execute(List<String> commandList) {
 		for(String commandString : commandList) {
 			if (commandString.startsWith("PLACE")) {
@@ -54,6 +58,7 @@ public class ToyGame {
 			return;
 		}
 
+		// the new position might not valid
 		Position newPosition = robot.makeMove();
 		if (!this.board.isValidMove(newPosition)) {
 			return;
