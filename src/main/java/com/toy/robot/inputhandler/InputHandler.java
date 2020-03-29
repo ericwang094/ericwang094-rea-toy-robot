@@ -33,7 +33,7 @@ public class InputHandler {
 		Scanner scanner = new Scanner(inputStream);
 		System.out.println("ToyGame started");
 		System.out.println("Please input command");
-		System.out.println("Invalid input will be ignored, CTRL + D to execute command, enjoy");
+		System.out.println("Invalid input will be ignored, CTRL + D/Z to execute command, enjoy");
 		return filterCommandFromInput(scanner);
 	}
 
