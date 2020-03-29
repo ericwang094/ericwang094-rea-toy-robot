@@ -34,4 +34,4 @@ target/site/jacoco/index.html
 Current test coverage: 97%
 
 #### UML
-![UML] (/uml/diagram.png)
+![UML] (uml/diagram.png)
