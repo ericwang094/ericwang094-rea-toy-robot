@@ -34,4 +34,4 @@ target/site/jacoco/index.html
 Current test coverage: 97%
 
 #### UML
-![UML] (uml/diagram.png)
+![UML] (https://github.com/ericwang094/rea-toy-robot/blob/master/uml/diagram.png)
