@@ -6,4 +6,5 @@ public enum Command {
 	LEFT,
 	RIGHT,
 	REPORT,
+	PLACE_OBJECT,
 }

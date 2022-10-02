@@ -82,4 +82,13 @@ public class ToyRobotAppTest {
 		assertThat(outContent.toString())
 				.isEqualTo("4,4,NORTH");
 	}
+
+	@Test
+	@DisplayName("Toy game test game with objects")
+	public void testToyGameSet8(){
+		String input = "input8.txt";
+		toyRobotApp.startGame(new String[]{input});
+		assertThat(outContent.toString())
+				.isEqualTo("0,0,NORTH");
+	}
 }

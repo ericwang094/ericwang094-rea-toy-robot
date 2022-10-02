@@ -39,7 +39,7 @@ public class Robot {
 	/**
 	 * @return next potential position for robot
 	 */
-	public Position makeMove() {
+	public Position nextRobotPosition() {
 		return this.position.forwardPosition(direction);
 	}
 

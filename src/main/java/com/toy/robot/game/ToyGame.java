@@ -23,7 +23,7 @@ public class ToyGame {
 	 */
 	public void execute(List<String> commandList) {
 		for(String commandString : commandList) {
-			if (commandString.startsWith("PLACE")) {
+			if (commandString.startsWith("PLACE ")) {
 				String[] placeArgs = commandString.split("\\s")[1].split(",");
 				Position position = new Position(Integer.parseInt(placeArgs[0]),
 						Integer.parseInt(placeArgs[1]));
@@ -35,6 +35,8 @@ public class ToyGame {
 				rotate(Command.valueOf(commandString));
 			} else if (commandString.equals("REPORT")) {
 				report();
+			} else if (commandString.equals("PLACE_OBJECT")) {
+				placeObstacle();
 			}
 		}
 	}
@@ -59,7 +61,7 @@ public class ToyGame {
 		}
 
 		// the new position might not valid
-		Position newPosition = robot.makeMove();
+		Position newPosition = robot.nextRobotPosition();
 		if (!this.board.isValidMove(newPosition)) {
 			return;
 		}
@@ -101,5 +103,22 @@ public class ToyGame {
 				.append(",")
 				.append(this.robot.getDirection());
 		System.out.print(sb.toString());
+	}
+
+	/**
+	 * Place obstacle
+	 */
+	private void placeObstacle() {
+		// if a robot is not on the table, ignore it
+		if (this.robot.getPosition() == null) {
+			System.out.print("");
+			return;
+		}
+
+		Position obstaclePosition = this.robot.nextRobotPosition();
+
+		if (this.board.isValidMove(obstaclePosition)) {
+			this.board.addObstacle(obstaclePosition);
+		}
 	}
 }

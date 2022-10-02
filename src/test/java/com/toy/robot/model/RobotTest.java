@@ -32,7 +32,7 @@ public class RobotTest {
 	@Test
 	@DisplayName("Make a robot move North")
 	public void moveRobotNorthTest() {
-		Position newRobotPosition = robot.makeMove();
+		Position newRobotPosition = robot.nextRobotPosition();
 		Position newPosition = new Position(2, 3);
 		assertThat(newRobotPosition)
 				.as("Test move position")
@@ -46,7 +46,7 @@ public class RobotTest {
 	@DisplayName("Make a robot move South")
 	public void moveRobotSouthTest() {
 		robot.setDirection(Direction.SOUTH);
-		Position newRobotPosition = robot.makeMove();
+		Position newRobotPosition = robot.nextRobotPosition();
 		Position newPosition = new Position(2, 1);
 		assertThat(newRobotPosition)
 				.as("Test move position")
@@ -60,7 +60,7 @@ public class RobotTest {
 	@DisplayName("Make a robot move West")
 	public void moveRobotWestTest() {
 		robot.setDirection(Direction.WEST);
-		Position newRobotPosition = robot.makeMove();
+		Position newRobotPosition = robot.nextRobotPosition();
 		Position newPosition = new Position(1, 2);
 		assertThat(newRobotPosition)
 				.as("Test move position")
@@ -74,7 +74,7 @@ public class RobotTest {
 	@DisplayName("Make a robot move East")
 	public void moveRobotEastTest() {
 		robot.setDirection(Direction.EAST);
-		Position newRobotPosition = robot.makeMove();
+		Position newRobotPosition = robot.nextRobotPosition();
 		Position newPosition = new Position(3, 2);
 		assertThat(newRobotPosition)
 				.as("Test move position")

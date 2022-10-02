@@ -1,12 +1,34 @@
 package com.toy.robot.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Board {
 	int sizeX;
 	int sizeY;
+	List<Position> obstacleList = new ArrayList<>();
 
 	public Board(int sizeX, int sizeY) {
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
+	}
+
+	public Board(int sizeX, int sizeY, List<Position> obstacleList) {
+		this.sizeX = sizeX;
+		this.sizeY = sizeY;
+		this.obstacleList = obstacleList;
+	}
+
+	public void setObstacleList(List<Position> obstacleList) {
+		this.obstacleList = obstacleList;
+	}
+
+	/**
+	 * // TODO decide if allow multiple same location obstacles
+	 * @param position
+	 */
+	public void addObstacle(Position position) {
+		this.obstacleList.add(position);
 	}
 
 	/**
@@ -23,6 +45,13 @@ public class Board {
 			return false;
 		}
 
+		// check if the robot is moving towards obstacle
+		for(Position obstacle : obstacleList) {
+			if (position.getX() == obstacle.getX()
+				&& position.getY() == obstacle.getY()) {
+				return false;
+			}
+		}
 		return true;
 	}
 }

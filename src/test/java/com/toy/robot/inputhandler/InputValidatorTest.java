@@ -55,4 +55,14 @@ public class InputValidatorTest {
 				.as("Valid Incorrect Place command with wrong direction")
 				.isTrue();
 	}
+
+	@Test
+	@DisplayName("Valid place object command ")
+	public void validatePlaceObjectCommand() {
+		String input = "PLACE_OBJECT";
+		boolean validResult = InputValidator.validateInput(input);
+		assertThat(validResult)
+				.as("Valid place object command")
+				.isTrue();
+	}
 }
